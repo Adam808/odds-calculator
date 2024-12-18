@@ -25,6 +25,11 @@ def convert(self):
         prop_gain = 1 / odds_flt - 1
         prob.set(str(res))
 
+    elif odds_type == 'Fractional':
+        res = round(Decimal(1 / (odds_flt + 1)), 2)
+        prop_gain = odds_flt
+        prob.set(str(res) + '%')
+
     k_crit = (real_odds_flt - (1-real_odds_flt) / prop_gain) * 100
     bet_amt = roll * k_crit
     k_crit = round(Decimal((real_odds_flt - (1-real_odds_flt) / prop_gain) * 100), 2)
@@ -33,8 +38,6 @@ def convert(self):
     kelly.set(str(k_crit) + '%')
     bet.set(str(bet_amt))
     
-
-
 
 # gui
 root = Tk()
@@ -56,7 +59,7 @@ bet = StringVar(root)
 ttk.Label(frame, text='Odds: ').grid(column=0, row=0, sticky=W)
 odds_value = ttk.Entry(frame, textvariable=odds).grid(column=1, row=0, sticky=W)
 
-odds_combobox = ttk.Combobox(frame, values=['American', 'Percentage'], state='readonly')
+odds_combobox = ttk.Combobox(frame, values=['American', 'Percentage', 'Fractional'], state='readonly')
 odds_combobox.grid(column=2, row=0, sticky=W)
 odds_combobox.current(0)
 
