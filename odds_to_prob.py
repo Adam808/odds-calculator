@@ -28,7 +28,7 @@ def convert(self):
     elif odds_type == 'Fractional':
         res = round(Decimal(1 / (odds_flt + 1)), 2)
         prop_gain = odds_flt
-        prob.set(str(res) + '%')
+        prob.set(str(res * 100) + '%')
 
     k_crit = (real_odds_flt - (1-real_odds_flt) / prop_gain) * 100
     bet_amt = roll * k_crit
