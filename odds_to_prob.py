@@ -18,17 +18,20 @@ def convert(self):
             res = round(Decimal((100 / (odds_flt + 100)) * 100), 2)
             prop_gain = abs(odds_flt) / 100
 
+        translate_odds.set('Prob:')
         prob.set(str(res) + '%')
 
     elif odds_type == 'Percentage':
         res = round(Decimal(1 / odds_flt - 1), 2)
         prop_gain = 1 / odds_flt - 1
         prob.set(str(res))
+        translate_odds.set('? to 1:')
 
     elif odds_type == 'Fractional':
         res = round(Decimal(1 / (odds_flt + 1)), 2)
         prop_gain = odds_flt
         prob.set(str(res * 100) + '%')
+        translate_odds.set('Prob:')
 
     k_crit = (real_odds_flt - (1-real_odds_flt) / prop_gain) * 100
     bet_amt = roll * k_crit
@@ -55,6 +58,7 @@ real_odds = StringVar(root)
 kelly = StringVar(root)
 bankroll = StringVar(root)
 bet = StringVar(root)
+translate_odds = StringVar(root)
 
 ttk.Label(frame, text='Odds: ').grid(column=0, row=0, sticky=W)
 odds_value = ttk.Entry(frame, textvariable=odds).grid(column=1, row=0, sticky=W)
@@ -63,7 +67,7 @@ odds_combobox = ttk.Combobox(frame, values=['American', 'Percentage', 'Fractiona
 odds_combobox.grid(column=2, row=0, sticky=W)
 odds_combobox.current(0)
 
-ttk.Label(frame, text='Prob(1-?): ').grid(column=0, row=1, sticky=W)
+ttk.Label(frame, textvariable=translate_odds).grid(column=0, row=1, sticky=W)
 ttk.Label(frame, textvariable=prob).grid(column=1, row=1, sticky=W)
 
 ttk.Label(frame, text='Real Prob: ').grid(column=0, row=2, sticky=W)
