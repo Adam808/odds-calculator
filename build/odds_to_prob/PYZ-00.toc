@@ -1,4 +1,4 @@
-('C:\\Users\\Adam\\Desktop\\Programs\\odds_calculator\\build\\odds_to_prob\\PYZ-00.pyz',
+('C:\\Users\\Adam\\Desktop\\Programs\\odds-calculator\\build\\odds_to_prob\\PYZ-00.pyz',
  [('_compat_pickle',
    'C:\\Users\\Adam\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\_compat_pickle.py',
    'PYMODULE'),

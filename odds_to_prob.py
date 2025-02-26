@@ -63,7 +63,7 @@ translate_odds = StringVar(root)
 ttk.Label(frame, text='Odds: ').grid(column=0, row=0, sticky=W)
 odds_value = ttk.Entry(frame, textvariable=odds).grid(column=1, row=0, sticky=W)
 
-odds_combobox = ttk.Combobox(frame, values=['American', 'Percentage', 'Fractional'], state='readonly')
+odds_combobox = ttk.Combobox(frame, values=['Percentage', 'American', 'Fractional'], state='readonly')
 odds_combobox.grid(column=2, row=0, sticky=W)
 odds_combobox.current(0)
 
