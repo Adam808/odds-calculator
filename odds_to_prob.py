@@ -22,8 +22,8 @@ def convert(self):
         prob.set(str(res) + '%')
 
     elif odds_type == 'Percentage':
-        res = round(Decimal(1 / odds_flt - 1), 2)
-        prop_gain = 1 / odds_flt - 1
+        res = round(Decimal(100 / odds_flt - 1), 2)
+        prop_gain = 100 / odds_flt - 1
         prob.set(str(res))
         translate_odds.set('? to 1:')
 
@@ -33,9 +33,9 @@ def convert(self):
         prob.set(str(res * 100) + '%')
         translate_odds.set('Prob:')
 
-    k_crit = (real_odds_flt - (1-real_odds_flt) / prop_gain) * 100
+    k_crit = (real_odds_flt - (100 - real_odds_flt) / prop_gain)
     bet_amt = roll * k_crit
-    k_crit = round(Decimal((real_odds_flt - (1-real_odds_flt) / prop_gain) * 100), 2)
+    k_crit = round(Decimal((real_odds_flt - (100 - real_odds_flt) / prop_gain)), 2)
     bet_amt = round(Decimal(bet_amt / 100), 2)
 
     kelly.set(str(k_crit) + '%')
